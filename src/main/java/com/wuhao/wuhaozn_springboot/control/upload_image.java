@@ -1,9 +1,11 @@
 package com.wuhao.wuhaozn_springboot.control;
 
 
+import cn.hutool.core.io.FileUtil;
 import com.wuhao.wuhaozn_springboot.server.image_service;
 import com.wuhao.wuhaozn_springboot.util.StateUtil;
 import com.wuhao.wuhaozn_springboot.util.Uploadimage_load;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,11 @@ public class upload_image {
             String fuffixname = file_name.substring(file_name.lastIndexOf("."));
 
 
-            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/layuimini/image_out/";
+            String path = System.getProperty("user.dir") + "/image_out/layuimini/image_out/";
+
+            if(!FileUtil.exist(path)) {
+                FileUtil.mkdir(path);
+            }
 
             String filePath =  UUID.randomUUID() + fuffixname;
 

@@ -33,7 +33,7 @@ public class article_image {
             String fuffixname = file_name.substring(file_name.lastIndexOf("."));
 
 
-            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/layuimini/image_article/";
+            String path = System.getProperty("user.dir")  + "/image_out/layuimini/image_article/";
 
             String filePath =  UUID.randomUUID() + fuffixname;
 
@@ -49,14 +49,14 @@ public class article_image {
             file.transferTo(file1);
 
             System.out.println("上传完成！！");
-            return new article_images(0,"上传成功",new data_util("/layuimini/image_article/"+filePath,"无"));
+            return new article_images(0,"上传成功",new data_util("/image_out/layuimini/image_article/"+filePath,"无"));
 
         }else {
 
             System.out.println("文件为空！！");
 
         }
-        return new article_images(400,"上传失败",new data_util("/layuimini/image_article/","无"));
+        return new article_images(400,"上传失败",new data_util("/image_out/layuimini/image_article/","无"));
     }
 
 }

@@ -33,13 +33,13 @@ public class image_service implements image_ser {
 
     @Override
     public boolean update_image(String image_name_new, String image_name_old) {
-        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/layuimini/image_out/";
+        String path = System.getProperty("user.dir") + "/image_out/layuimini/image_out/";
         String pathname=path+image_name_old;
         File file =new File(pathname);
 
         if(file.delete()){
         }else{
-            path=ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/layuimini/image_article/";
+            path = System.getProperty("user.dir") + "/image_out/layuimini/image_article/";
             pathname=path+image_name_old;
             File file1 =new File(pathname);
             if(file1.delete()){
@@ -51,14 +51,13 @@ public class image_service implements image_ser {
 
     @Override
     public boolean delete_image(String image_name) {
-
-       String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/layuimini/image_out/";
+       String path = System.getProperty("user.dir") + "/image_out/layuimini/image_out/";
        String pathname=path+image_name;
        File file =new File(pathname);
 
        if(file.delete()){
        }else{
-           path=ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/layuimini/image_article/";
+           path=System.getProperty("user.dir") + "/image_out/layuimini/image_article/";
            pathname=path+image_name;
            File file1 =new File(pathname);
            if(file1.delete()){

@@ -29,6 +29,7 @@ public class Product_all_control {
 
     @Autowired
     image_service imageService;
+
     @PostMapping("/product")
     @ResponseBody
     public StateUtil insert_product(product_bean productBean){
