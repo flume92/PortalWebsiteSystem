@@ -63,13 +63,35 @@
 <script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
 <script th:src="@{/layuimini/lib/jq-module/zyupload/zyupload-1.0.0.min.js}" charset="utf-8"></script>
 <script type="text/javascript">
+
+
     layui.use(['form', 'layedit','upload','jquery','layer'], function () {
+
+        var index = parent.layer.getFrameIndex(window.name);
+        console.log('index=======',index);
+        const globalEditData = parent.globalEditData;
+        console.log('globalEditData===',parent.globalEditData)
+
+
 
         var $=layui.jquery
         var form=layui.form
         var upload = layui.upload;
         var layedit = layui.layedit;
         var num=10
+
+        if(globalEditData){
+            $('input[name="title"]').val(globalEditData.product_name);
+            $('textarea[name="desc"]').val(globalEditData.product_brief);
+            var imageSrc = globalEditData.product_image;
+            if (imageSrc) {
+                $('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', imageSrc);
+            }
+            $('input[name="product"]').prop('checked', true);
+            form.render('checkbox');
+
+        }
+
         upload.render({
             elem: '#test10'
             ,url: '/upload_image' //改成您自己的上传接口
@@ -85,6 +107,15 @@
             }
         });
         var index=layedit.build('edit'); //建立编辑器
+        if(index){
+            setTimeout(function() {
+                var content = globalEditData.product_content;
+                if (content) {
+                    layedit.setContent(index, content);
+                }
+            }, 100);
+        }
+
 
         form.verify({
             content0:function (value) {

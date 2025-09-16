@@ -51,6 +51,8 @@
 </div>
 <script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
 <script>
+
+    var globalEditData;
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
             form = layui.form,
@@ -160,8 +162,11 @@
         table.on('tool(currentTableFilter)', function (obj) {
 
             var data = obj.data;
+
             var url_="/upload"
             if (obj.event === 'edit') {
+
+                globalEditData = data;
 
                 var index = layer.open({
                     title: '编辑产品',
@@ -171,6 +176,7 @@
                     shadeClose: true,
                     area: ['75%', '75%'],
                     content: url_,
+
                 });
                 $(window).on("resize", function () {
                     layer.full(index);
