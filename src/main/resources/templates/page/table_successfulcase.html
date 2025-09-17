@@ -19,7 +19,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">成功案例名称</label>
+                            <label class="layui-form-label">合作名称</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="classify" autocomplete="off" class="layui-input">
                             </div>
@@ -35,15 +35,15 @@
 
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加成功案例</button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除成功案例</button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加合作</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除合作</button>
             </div>
         </script>
 
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑成功案例</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑合作</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
 
@@ -70,10 +70,10 @@
             cols: [ [
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 150, title: 'id', sort: true},
-                {field: 'case_name', width: 200, title: '成功案例名称'},
-                {field: 'case_brief', width: 200, title: '成功案例简介'},
-                {field: 'case_image', width: 200, title: '成功案例图片URL'},
-                {field: 'case_content', title: '成功案例内容', minWidth: 150},
+                {field: 'case_name', width: 200, title: '合作名称'},
+                {field: 'case_brief', width: 200, title: '合作简介'},
+                {field: 'case_image', width: 200, title: '合作图片URL'},
+                {field: 'case_content', title: '合作内容', minWidth: 150},
                 {title:"操作",toolbar: "#currentTableBar"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -107,7 +107,7 @@
 
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
-                    title: '添加成功案例',
+                    title: '添加合作',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,
@@ -169,7 +169,7 @@
                 globalEditData.type = 4;
 
                 var index = layer.open({
-                    title: '编辑成功案例',
+                    title: '编辑合作',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,
@@ -182,7 +182,7 @@
                 });
                 return false;
             } else if (obj.event === 'delete') {
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('确定删除吗', function (index) {
                    $.ajax({
                         url:"/case/delete_id",
                         type:"post",

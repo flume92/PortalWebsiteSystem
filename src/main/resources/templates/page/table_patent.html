@@ -19,7 +19,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">专利名称</label>
+                            <label class="layui-form-label">赛事名称</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="classify" autocomplete="off" class="layui-input">
                             </div>
@@ -35,15 +35,15 @@
 
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加专利</button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除专利</button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加赛事</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除赛事</button>
             </div>
         </script>
 
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑专利</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑赛事</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
 
@@ -70,10 +70,10 @@
             cols: [ [
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 150, title: 'id', sort: true},
-                {field: 'patents_name', width: 200, title: '专利名称'},
-                {field: 'patents_brief', width: 200, title: '专利简介'},
-                {field: 'patents_image', width: 200, title: '专利图片URL'},
-                {field: 'patents_content', title: '专利内容', minWidth: 150},
+                {field: 'patents_name', width: 200, title: '赛事名称'},
+                {field: 'patents_brief', width: 200, title: '赛事简介'},
+                {field: 'patents_image', width: 200, title: '赛事图片URL'},
+                {field: 'patents_content', title: '赛事内容', minWidth: 150},
                 {title:"操作",toolbar: "#currentTableBar"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -107,7 +107,7 @@
 
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
-                    title: '添加专利',
+                    title: '添加赛事',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,
@@ -169,7 +169,7 @@
                 globalEditData.type = 2;
 
                 var index = layer.open({
-                    title: '编辑专利',
+                    title: '编辑赛事',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,
@@ -182,7 +182,7 @@
                 });
                 return false;
             } else if (obj.event === 'delete') {
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('确定删除吗', function (index) {
 
                     $.ajax({
                         url:"/patents/delete_id",

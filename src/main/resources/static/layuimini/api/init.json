@@ -45,25 +45,25 @@
           "icon": "fa fa-calendar",
           "target": "_self",
           "child": [{
-            "title": "产品信息",
+            "title": "创运简介",
             "href": "/product/product_table",
             "icon": "fa fa-list-alt",
             "target": "_self"
           },
             {
-              "title": "专利信息",
+              "title": "赛事报道",
               "href": "/patents/patents_table",
               "icon": "fa fa-list-alt",
               "target": "_self"
             },
             {
-              "title": "解决方案",
+              "title": "官方公告",
               "href": "/solution/solution_table",
               "icon": "fa fa-list-alt",
               "target": "_self"
             },
             {
-              "title": "成功案例",
+              "title": "合作共赢",
               "href": "/case/case_table",
               "icon": "fa fa-list-alt",
               "target": "_self"

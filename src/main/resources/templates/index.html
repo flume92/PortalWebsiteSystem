@@ -34,16 +34,16 @@
                            <a class="nav-link" th:href="@{/home}">首页</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" th:href="@{/services}">产品介绍</a>
+                           <a class="nav-link" th:href="@{/services}">创运简介</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link " th:href="@{/solution}">解决方案</a>
+                           <a class="nav-link " th:href="@{/solution}">赛事报道</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link " th:href="@{/blog}">专利荣誉</a>
+                           <a class="nav-link " th:href="@{/blog}">官方公告</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" th:href="@{/successful}">成功案例</a>
+                           <a class="nav-link" th:href="@{/successful}">合作共赢</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" th:href="@{/about}">关于我们</a>
@@ -66,16 +66,16 @@
                         <a class="nav-link" th:href="@{/home}">首页</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" th:href="@{/services}">产品介绍</a>
+                        <a class="nav-link" th:href="@{/services}">创运简介</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link " th:href="@{/solution}">解决方案</a>
+                        <a class="nav-link " th:href="@{/solution}">赛事报道</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link " th:href="@{/blog}">专利荣誉</a>
+                        <a class="nav-link " th:href="@{/blog}">官方公告</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" th:href="@{/successful}">成功案例</a>
+                        <a class="nav-link" th:href="@{/successful}">合作共赢</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" th:href="@{/about}">关于我们</a>
@@ -118,13 +118,13 @@
       <!-- services section start -->
       <div class="services_section layout_padding">
          <div class="container">
-            <h1 class="services_taital">产品简介 </h1>
-            <p class="services_text">公司自主研发</p>
+            <h1 class="services_taital">创运简介 </h1>
+<!--            <p class="services_text">公司自主研发</p>-->
             <div class="services_section_2">
                <div class="row">
                   <div class="col-md-4" th:each="cp,item :${session.cp}">
                      <div><img style="width: 400px;height: 400px" th:src="@{${cp.product_image}}" class="services_img"></div>
-                     <div class="btn_main"><a th:href="@{/services}">产品详情</a></div>
+                     <div class="btn_main"><a th:href="@{/services}">详情</a></div>
                   </div>
                </div>
             </div>
@@ -135,8 +135,8 @@
 
       <div>
          <div class="container">
-            <h1 class="services_taital">专利介绍 </h1>
-            <p class="services_text">公司申请国家的专利</p>
+            <h1 class="services_taital">官方公告 </h1>
+<!--            <p class="services_text">公司申请国家的专利</p>-->
 
  <div class="about_section ">
          <div class="container-fluid">
@@ -145,7 +145,7 @@
                   <div>
                      <h1 class="about_taital" th:text="${zl.patents_name}"></h1>
                      <p class="about_text" th:text="${zl.patents_brief}">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All </p>
-                     <div class="readmore_bt"><a th:href="@{/blog}">专利详情</a></div>
+                     <div class="readmore_bt"><a th:href="@{/blog}">详情</a></div>
                   </div>
                </div>
                <div class="col-md-6 padding_right_0">

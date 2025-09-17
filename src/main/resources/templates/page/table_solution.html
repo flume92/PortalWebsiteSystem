@@ -19,7 +19,7 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">解决方案名称</label>
+                            <label class="layui-form-label">公告名称</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="classify" autocomplete="off" class="layui-input">
                             </div>
@@ -35,15 +35,15 @@
 
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加解决方案</button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除解决方案</button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加公告</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除公告</button>
             </div>
         </script>
 
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑解决方案</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑公告</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
 
@@ -70,10 +70,10 @@
             cols: [ [
                 {type: "checkbox", width: 50},
                 {field: 'id', width: 150, title: 'id', sort: true},
-                {field: 'solution_name', width: 200, title: '解决方案名称'},
-                {field: 'solution_brief', width: 200, title: '解决方案简介'},
-                {field: 'solution_image', width: 200, title: '解决方案图片URL'},
-                {field: 'solution_content', title: '解决方案内容', minWidth: 150},
+                {field: 'solution_name', width: 200, title: '公告名称'},
+                {field: 'solution_brief', width: 200, title: '公告简介'},
+                {field: 'solution_image', width: 200, title: '公告图片URL'},
+                {field: 'solution_content', title: '公告内容', minWidth: 150},
                 {title:"操作",toolbar: "#currentTableBar"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -107,7 +107,7 @@
 
             if (obj.event === 'add') {  // 监听添加操作
                 var index = layer.open({
-                    title: '添加解决方案',
+                    title: '添加公告',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,
@@ -169,7 +169,7 @@
                 globalEditData.type = 3;
 
                 var index = layer.open({
-                    title: '编辑解决方案',
+                    title: '编辑公告',
                     type: 2,
                     shade: 0.2,
                     maxmin:true,
@@ -182,7 +182,7 @@
                 });
                 return false;
             } else if (obj.event === 'delete') {
-                layer.confirm('真的删除行么', function (index) {
+                layer.confirm('确定删除吗', function (index) {
 
                     $.ajax({
                         url:"/solution/delete_id",
