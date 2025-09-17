@@ -51,6 +51,8 @@
 </div>
 <script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
 <script>
+
+    var globalEditData;
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
             form = layui.form,
@@ -162,6 +164,9 @@
             var data = obj.data;
             var url_="/upload"
             if (obj.event === 'edit') {
+
+                globalEditData = data;
+                globalEditData.type = 2;
 
                 var index = layer.open({
                     title: '编辑专利',

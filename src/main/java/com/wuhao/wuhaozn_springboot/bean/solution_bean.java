@@ -1,5 +1,6 @@
 package com.wuhao.wuhaozn_springboot.bean;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@TableName("solution_table")
 public class solution_bean {
     int id;
     String solution_name;

@@ -4,7 +4,7 @@
     "href": ""
   },
   "logoInfo": {
-    "title": "空想家",
+    "title": "青年创业运动会",
     "image": "/layuimini/images/logo.png",
     "href": ""
   },
@@ -77,11 +77,6 @@
         },
 
         {
-          "title": "产品编辑",
-          "href": "/upload",
-          "icon": "fa fa-edit",
-          "target": "_self"
-        },    {
           "title": "公司信息",
           "href": "/company",
           "icon": "fa fa-snowflake-o",

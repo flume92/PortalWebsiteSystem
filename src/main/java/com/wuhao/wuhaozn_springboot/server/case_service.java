@@ -17,7 +17,12 @@ public class case_service implements case_ser {
 
     @Override
     public int insert_case(case_bean caseBean) {
-        int code =caseMapper.insert_case(caseBean);
+        int code;
+        if(caseBean.getId() != 0){
+            code =caseMapper.updateById(caseBean);
+        }else{
+            code =caseMapper.insert_case(caseBean);
+        }
         return code;
     }
 

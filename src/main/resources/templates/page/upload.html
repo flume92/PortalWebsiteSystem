@@ -11,6 +11,12 @@
 <div class="layuimini-container">
    <div class="layuimini-main">
        <form class="layui-form" action="">
+           <div class="layui-form-item" hidden="hidden">
+               <label class="layui-form-label">ID：</label>
+               <div class="layui-input-block">
+                   <input type="text" name="id"  placeholder="请输入标题" autocomplete="off" class="layui-input">
+               </div>
+           </div>
         <div class="layui-form-item">
             <label class="layui-form-label">标题：</label>
             <div class="layui-input-block">
@@ -20,10 +26,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">类型</label>
             <div class="layui-input-block">
-                <input type="checkbox" value="1" name="product" title="产品" lay-skin="primary" checked>
-                <input type="checkbox" value="2" name="patents" title="专利" lay-skin="primary">
-                <input type="checkbox" value="3" name="soultion" title="解决方案" lay-skin="primary">
-                <input type="checkbox" value="4" name="case" title="成功案例" lay-skin="primary">
+                <input type="radio" value="1" name="type" title="产品" lay-skin="primary">
+                <input type="radio" value="2" name="type" title="专利" lay-skin="primary">
+                <input type="radio" value="3" name="type" title="解决方案" lay-skin="primary">
+                <input type="radio" value="4" name="type" title="成功案例" lay-skin="primary">
 
             </div>
         </div>
@@ -81,15 +87,18 @@
         var num=10
 
         if(globalEditData){
-            $('input[name="title"]').val(globalEditData.product_name);
-            $('textarea[name="desc"]').val(globalEditData.product_brief);
-            var imageSrc = globalEditData.product_image;
+            $('input[name="id"]').val(globalEditData.id);
+            $('input[name="title"]').val(globalEditData.product_name || globalEditData.case_name || globalEditData.patents_name || globalEditData.solution_name);
+            $('textarea[name="desc"]').val(globalEditData.product_brief || globalEditData.case_brief || globalEditData.patents_brief || globalEditData.solution_brief);
+            var imageSrc = globalEditData.product_image || globalEditData.case_image || globalEditData.patents_image || globalEditData.solution_image;
             if (imageSrc) {
                 $('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', imageSrc);
             }
-            $('input[name="product"]').prop('checked', true);
-            form.render('checkbox');
+            $('input[name="type"][value="'+globalEditData.type+'"]').prop('checked', true);
 
+
+            form.render('radio');
+            parent.globalEditData = null;
         }
 
         upload.render({
@@ -109,7 +118,7 @@
         var index=layedit.build('edit'); //建立编辑器
         if(index){
             setTimeout(function() {
-                var content = globalEditData.product_content;
+                var content = globalEditData.product_content || globalEditData.case_content || globalEditData.patents_content || globalEditData.solution_content;
                 if (content) {
                     layedit.setContent(index, content);
                 }
@@ -133,7 +142,7 @@
             var src=$('#uploadDemoView').find("img").attr("src");
 
             data=datas.field;
-            if(data.product==1){
+            if(data.type==1){
                 $.ajax({
                     url :"/content/product",
                     type: "post",
@@ -142,7 +151,8 @@
                         product_name: data.title,
                         product_brief: data.desc,
                         product_image: src,
-                        product_content: text
+                        product_content: text,
+                        id: data.id
 
                     },
                     success :function (dat) {
@@ -160,7 +170,7 @@
                 })
             }
 
-           if(data.patents==2){
+           if(data.type==2){
                $.ajax({
                    url :"/content/patents",
                    type: "post",
@@ -169,7 +179,8 @@
                        patents_name: data.title,
                        patents_brief: data.desc,
                        patents_image: src,
-                       patents_content: text
+                       patents_content: text,
+                       id: data.id
                    },
                    success:function (dat) {
                        if(dat.statecode==200){
@@ -187,7 +198,7 @@
                    }})
            }
 
-            if(data.soultion==3){
+            if(data.type==3){
                 $.ajax({
                     url :"/content/solution",
                     type: "post",
@@ -196,7 +207,9 @@
                         solution_name: data.title,
                         solution_brief: data.desc,
                         solution_image: src,
-                        solution_content: text},
+                        solution_content: text,
+                        id: data.id
+                    },
                     success:function (dat) {
                         if(dat.statecode==200){
                             if(num==0){
@@ -215,7 +228,7 @@
             }
 
 
-            if(data.case==4){
+            if(data.type==4){
                 $.ajax({
                     url :"/content/case",
                     type: "post",
@@ -224,7 +237,8 @@
                         case_name: data.title,
                         case_brief: data.desc,
                         case_image: src,
-                        case_content: text
+                        case_content: text,
+                        id: data.id
                     },
                     success:function (dat) {
                         if(dat.statecode==200){

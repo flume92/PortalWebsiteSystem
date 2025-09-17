@@ -19,7 +19,12 @@ public class product_service  implements product_ser{
     @Override
     public int insert_product(product_bean productBean) {
 
-        int code= productMapper.insert_product(productBean);
+        int code;
+        if(productBean.getId() != 0){
+            code = productMapper.updateById(productBean);
+        }else {
+            code = productMapper.insert_product(productBean);
+        }
 
        return code;
     }

@@ -18,7 +18,12 @@ public class patents_service implements  patents_ser {
     @Override
     public int insert_patents(patents_bean patentsBean) {
 
-        int code =patentsMapper.insert_patents(patentsBean);
+        int code;
+        if(patentsBean.getId() != 0){
+            code =patentsMapper.updateById(patentsBean);
+        }else{
+            code =patentsMapper.insert_patents(patentsBean);
+        }
         return code;
     }
     @Override

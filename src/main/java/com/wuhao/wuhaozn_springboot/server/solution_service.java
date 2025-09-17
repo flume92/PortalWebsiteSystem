@@ -17,7 +17,12 @@ public class solution_service implements solution_ser {
     solution_mapper solutionMapper;
     @Override
     public int insert_solution(solution_bean solutionBean) {
-        int code= solutionMapper.insert_solution(solutionBean);
+        int code;
+        if(solutionBean.getId() != 0){
+            code = solutionMapper.updateById(solutionBean);
+        }else{
+            code = solutionMapper.insert_solution(solutionBean);
+        }
 
         return code;
     }
