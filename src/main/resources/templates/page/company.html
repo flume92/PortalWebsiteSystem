@@ -48,7 +48,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">详细介绍：</label>
                 <div class="layui-input-block">
-                    <textarea id="edit" lay-verify="content0" style="display: none;"></textarea>
+                    <textarea id="edit" name="content" lay-verify="content0" style="display: none;"></textarea>
                 </div>
             </div>
 
@@ -103,7 +103,12 @@
                         "phone": datas.company_phone
                         , "place": datas.company_place
                         , "desc": datas.company_intro
-                    })}})})
+                        , "content": datas.company_content
+                    })
+                    layedit.setContent(index, datas.company_content)
+                }})})
+
+
 
         form.on("submit(tijiao)",function (datas) {
             var text = layedit.getContent(index)
