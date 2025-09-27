@@ -45,7 +45,7 @@
           "icon": "fa fa-calendar",
           "target": "_self",
           "child": [{
-            "title": "创运简介",
+            "title": "赛事介绍",
             "href": "/product/product_table",
             "icon": "fa fa-list-alt",
             "target": "_self"
